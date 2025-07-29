@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     locale: "uz_UZ",
     images: "https://media.graphassets.com/MZeDZ6H8TbqoBaVufEge",
     countryName: "Uzbekistan",
-    siteName: "Sammi",
+    siteName: "Umidjon Gafforov",
     emails: "info@umidjon.site",
   },
   keywords:
