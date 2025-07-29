@@ -1,0 +1,58 @@
+import "./globals.css";
+
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+import { ClerkProvider } from "@clerk/nextjs";
+import { ThemeProvider } from "@/components/providers/theme-provider";
+import ModalProvider from "@/components/providers/modal-provider";
+import { Toaster } from "sonner";
+import SubscriptionProvider from "@/components/providers/subscription-provider";
+
+const inter = Inter({ subsets: ["latin"] });
+
+export const metadata: Metadata = {
+  metadataBase: new URL("https://drive.umidjon.site"),
+  title: "Google drive",
+  description: "Google drive web application clone created by umidjon.site",
+  authors: [{ name: "Umidjon Gafforov", url: "https://drive.umidjon.site" }],
+  icons: { icon: "/logo.svg" },
+  openGraph: {
+    title: "Google drive",
+    description: "Google drive web application clone created by umidjon.site",
+    type: "website",
+    url: "https://drive.umidjon.site",
+    locale: "uz_UZ",
+    images: "https://media.graphassets.com/MZeDZ6H8TbqoBaVufEge",
+    countryName: "Uzbekistan",
+    siteName: "Sammi",
+    emails: "info@umidjon.site",
+  },
+  keywords:
+    "Google Drive, Google drive web, Google drive clone, Google drive web application, Umidjon Gafforov",
+};
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <ClerkProvider>
+      <html lang="en" suppressHydrationWarning>
+        <body className={inter.className}>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+            storageKey="google-drive"
+          >
+            <Toaster position="top-center" />
+            <ModalProvider />
+            <SubscriptionProvider>{children}</SubscriptionProvider>
+          </ThemeProvider>
+        </body>
+      </html>
+    </ClerkProvider>
+  );
+}
